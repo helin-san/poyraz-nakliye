@@ -166,7 +166,40 @@
   })();
 
   /* ======================================================================
-     4) Hizmet kartlarında hafif 3D tilt (sadece mouse ile, masaüstü)
+     4) Scroll ilerleme çubuğu
+     ====================================================================== */
+  (function scrollProgress() {
+    var bar = document.querySelector(".scroll-progress");
+    if (!bar) return;
+
+    function update() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      bar.style.width = pct + "%";
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+
+  /* ======================================================================
+     5) Kartlarda imleci takip eden ışık (spotlight)
+     ====================================================================== */
+  (function spotlight() {
+    if (reducedMotion || !canHover) return;
+    var targets = document.querySelectorAll(".card, .feature-card, .testimonial-card, .dark-card");
+    targets.forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty("--mx", ((e.clientX - rect.left) / rect.width * 100) + "%");
+        el.style.setProperty("--my", ((e.clientY - rect.top) / rect.height * 100) + "%");
+      });
+    });
+  })();
+
+  /* ======================================================================
+     6) Hizmet kartlarında hafif 3D tilt (sadece mouse ile, masaüstü)
      ====================================================================== */
   (function tilt() {
     if (reducedMotion || !canHover) return;

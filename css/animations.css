@@ -49,3 +49,124 @@
   .card:hover { transform: none; }
   .dark-card:hover { transform: none; }
 }
+
+/* ==========================================================================
+   Scroll ilerleme çubuğu (sayfa en üstü, sabit)
+   ========================================================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--orange-500) 0%, var(--violet-500) 50%, var(--cyan-400) 100%);
+  background-size: 200% 100%;
+  animation: progressShimmer 5s linear infinite;
+  z-index: 300;
+  pointer-events: none;
+}
+@keyframes progressShimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ==========================================================================
+   Aurora / gradient mesh arka planlar — hero ve koyu blok
+   ========================================================================== */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .45;
+  animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+.aurora-blob--1 {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -100px;
+  background: var(--orange-500);
+  animation-duration: 24s;
+}
+.aurora-blob--2 {
+  width: 380px;
+  height: 380px;
+  top: 20%;
+  right: -120px;
+  background: var(--violet-500);
+  animation-duration: 28s;
+  animation-delay: -6s;
+}
+.aurora-blob--3 {
+  width: 300px;
+  height: 300px;
+  bottom: -110px;
+  left: 32%;
+  background: var(--cyan-400);
+  animation-duration: 20s;
+  animation-delay: -3s;
+}
+@keyframes auroraDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(50px, -35px) scale(1.15); }
+  100% { transform: translate(-35px, 25px) scale(.92); }
+}
+
+/* ==========================================================================
+   İmleci takip eden ışık (spotlight) — kartlarda hover
+   ========================================================================== */
+.card::before,
+.feature-card::before,
+.testimonial-card::before,
+.dark-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255,122,33,.18), transparent 70%);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.dark-card::before {
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(139,92,246,.28), transparent 70%);
+}
+.card:hover::before,
+.feature-card:hover::before,
+.testimonial-card:hover::before,
+.dark-card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Gradient metinlerde yumuşak shimmer
+   ========================================================================== */
+.text-gradient,
+.hero-mega-accent {
+  background-size: 200% auto;
+  animation: gradientShimmer 6s ease-in-out infinite;
+}
+@keyframes gradientShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .scroll-progress,
+  .text-gradient,
+  .hero-mega-accent {
+    animation: none;
+  }
+}
+
+/* Mobilde aurora'yı hafiflet (performans) */
+@media (max-width: 860px) {
+  .aurora-blob { filter: blur(60px); opacity: .3; }
+}

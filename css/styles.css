@@ -13,6 +13,9 @@
   --orange-400: #FFA35C;
   --orange-100: #FFEFE0;
 
+  --violet-500: #8B5CF6;
+  --cyan-400: #22D3EE;
+
   --bg-light: #F6FAFF;
   --white: #FFFFFF;
   --gray-900: #202B42;
@@ -374,6 +377,11 @@ section { padding: 88px 0; position: relative; }
   position: relative;
 }
 
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-inner {
   display: grid;
   grid-template-columns: 1.1fr .9fr;
@@ -586,6 +594,13 @@ section { padding: 88px 0; position: relative; }
 .dark-block {
   background: var(--ink-950);
   color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-block .container {
+  position: relative;
+  z-index: 1;
 }
 
 .dark-block-head {
@@ -625,6 +640,7 @@ section { padding: 88px 0; position: relative; }
 
 .dark-card {
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: rgba(255,255,255,.04);
@@ -717,6 +733,8 @@ section { padding: 88px 0; position: relative; }
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   background: rgba(255,255,255,.6);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
@@ -744,6 +762,8 @@ section { padding: 88px 0; position: relative; }
 }
 
 .feature-card {
+  position: relative;
+  overflow: hidden;
   text-align: center;
   padding: 30px 20px;
   background: rgba(255,255,255,.55);
@@ -852,6 +872,7 @@ section { padding: 88px 0; position: relative; }
   padding: 30px 26px;
   border: 1px solid rgba(255,255,255,.6);
   position: relative;
+  overflow: hidden;
   transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
 }
 .testimonial-card:hover {
