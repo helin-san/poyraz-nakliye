@@ -166,7 +166,61 @@
   })();
 
   /* ======================================================================
-     4) Scroll ilerleme çubuğu
+     4) Hero görsel carousel — otomatik geçiş + ok/nokta kontrolleri
+     ====================================================================== */
+  (function heroCarousel() {
+    var hero = document.querySelector(".hero");
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
+    var dots = Array.prototype.slice.call(document.querySelectorAll(".hero-dot"));
+    var prevBtn = document.querySelector(".hero-arrow--prev");
+    var nextBtn = document.querySelector(".hero-arrow--next");
+    if (!hero || slides.length < 2) return;
+
+    var current = 0;
+    var timer = null;
+    var AUTO_MS = 6000;
+
+    function goTo(index) {
+      index = (index + slides.length) % slides.length;
+      if (index === current) return;
+      slides[current].classList.remove("is-active");
+      dots[current] && dots[current].classList.remove("is-active");
+      dots[current] && dots[current].setAttribute("aria-selected", "false");
+      current = index;
+      slides[current].classList.add("is-active");
+      dots[current] && dots[current].classList.add("is-active");
+      dots[current] && dots[current].setAttribute("aria-selected", "true");
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() {
+      if (reducedMotion) return;
+      stopAuto();
+      timer = window.setInterval(next, AUTO_MS);
+    }
+    function stopAuto() {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    }
+
+    prevBtn && prevBtn.addEventListener("click", function () { prev(); startAuto(); });
+    nextBtn && nextBtn.addEventListener("click", function () { next(); startAuto(); });
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        goTo(parseInt(dot.getAttribute("data-goto"), 10) || 0);
+        startAuto();
+      });
+    });
+
+    hero.addEventListener("mouseenter", stopAuto);
+    hero.addEventListener("mouseleave", startAuto);
+
+    startAuto();
+  })();
+
+  /* ======================================================================
+     5) Scroll ilerleme çubuğu
      ====================================================================== */
   (function scrollProgress() {
     var bar = document.querySelector(".scroll-progress");
@@ -184,7 +238,7 @@
   })();
 
   /* ======================================================================
-     5) Kartlarda imleci takip eden ışık (spotlight)
+     6) Kartlarda imleci takip eden ışık (spotlight)
      ====================================================================== */
   (function spotlight() {
     if (reducedMotion || !canHover) return;
@@ -199,7 +253,7 @@
   })();
 
   /* ======================================================================
-     6) Hizmet kartlarında hafif 3D tilt (sadece mouse ile, masaüstü)
+     7) Hizmet kartlarında hafif 3D tilt (sadece mouse ile, masaüstü)
      ====================================================================== */
   (function tilt() {
     if (reducedMotion || !canHover) return;

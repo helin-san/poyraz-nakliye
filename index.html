@@ -83,49 +83,16 @@
 
 <main id="top">
 
-  <!-- ================= HERO ================= -->
+  <!-- ================= HERO (görsel carousel) ================= -->
   <section class="hero" id="hero">
-    <div class="aurora" aria-hidden="true">
-      <span class="aurora-blob aurora-blob--1"></span>
-      <span class="aurora-blob aurora-blob--2"></span>
-      <span class="aurora-blob aurora-blob--3"></span>
-    </div>
-    <div class="container">
-      <div class="hero-mega" aria-hidden="true">
-        <span class="hero-mega-line">POYRAZ</span>
-        <span class="hero-mega-line hero-mega-accent">NAKLİYE</span>
-      </div>
-    </div>
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <span class="hero-badge">★ Sigortalı &amp; Güvenilir Taşımacılık</span>
-        <h1>İstanbul'da Güvenilir <span class="text-gradient">Evden Eve Nakliyat</span></h1>
-        <p class="lead">Eşyalarınız emin ellerde. Deneyimli ekibimiz, sigortalı taşıma güvencesi ve uygun fiyatlarla İstanbul'un her ilçesinde hızlı ve özenli nakliyat hizmeti sunuyoruz.</p>
-        <div class="hero-ctas">
-          <a href="#teklif-formu" class="btn btn-primary">Ücretsiz Fiyat Teklifi Al</a>
-          <a href="#hizmetler" class="btn btn-outline">Hizmetlerimizi İncele</a>
+    <div class="hero-slides">
+      <div class="hero-slide is-active" data-slide="0">
+        <div class="aurora" aria-hidden="true">
+          <span class="aurora-blob aurora-blob--1"></span>
+          <span class="aurora-blob aurora-blob--2"></span>
+          <span class="aurora-blob aurora-blob--3"></span>
         </div>
-        <div class="hero-ctas" style="margin-top:16px;">
-          <a href="#teklif-formu" class="ship-btn">Hemen Teklif Gönder</a>
-        </div>
-        <div class="hero-trust">
-          <div>
-            <span class="num">7/24</span>
-            <small>Destek Hattı</small>
-          </div>
-          <div>
-            <span class="num counter" data-count="100" data-prefix="%">%0</span>
-            <small>Sigortalı Taşıma</small>
-          </div>
-          <div>
-            <span class="num counter" data-count="39">0</span>
-            <small>İstanbul İlçesi</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="hero-slide-art" viewBox="0 0 480 320" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="240" width="480" height="4" fill="rgba(255,255,255,.18)"/>
           <path d="M40 150c22-16 48-16 64 0" stroke="#FFA35C" stroke-width="6" stroke-linecap="round"/>
           <path d="M20 175c30-20 62-20 86 0" stroke="#FFA35C" stroke-width="6" stroke-linecap="round"/>
@@ -142,20 +109,33 @@
             <circle cx="206" cy="130" r="10" fill="#FFFFFF"/>
           </g>
         </svg>
-        <div class="hero-icon-row">
-          <span class="chip">
-            <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-            Sigortalı
-          </span>
-          <span class="chip">
-            <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-            Hızlı Planlama
-          </span>
-          <span class="chip">
-            <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M4 21c0-4 3-6 8-6s8 2 8 6"/><circle cx="12" cy="8" r="4"/></svg>
-            Deneyimli Ekip
-          </span>
+        <div class="hero-slide-overlay"></div>
+      </div>
+
+      <div class="hero-slide" data-slide="1">
+        <div class="aurora" aria-hidden="true">
+          <span class="aurora-blob aurora-blob--2"></span>
+          <span class="aurora-blob aurora-blob--3"></span>
+          <span class="aurora-blob aurora-blob--1"></span>
         </div>
+        <svg class="hero-slide-art hero-slide-art--icon" viewBox="0 0 200 200" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 14l70 26v46c0 46-30 78-70 100-40-22-70-54-70-100V40l70-26z" stroke="#FFA35C" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M66 100l24 24 46-52" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="hero-slide-overlay"></div>
+      </div>
+
+      <div class="hero-slide" data-slide="2">
+        <div class="aurora" aria-hidden="true">
+          <span class="aurora-blob aurora-blob--3"></span>
+          <span class="aurora-blob aurora-blob--1"></span>
+          <span class="aurora-blob aurora-blob--2"></span>
+        </div>
+        <svg class="hero-slide-art hero-slide-art--icon" viewBox="0 0 200 200" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 12c-38 0-62 28-62 62 0 46 62 114 62 114s62-68 62-114c0-34-24-62-62-62z" stroke="#FFA35C" stroke-width="5" stroke-linejoin="round"/>
+          <circle cx="100" cy="76" r="24" stroke="#FFFFFF" stroke-width="6"/>
+        </svg>
+        <div class="hero-slide-overlay"></div>
       </div>
     </div>
 
@@ -163,6 +143,43 @@
       <span class="hero-badge-card"><strong>★ 4.9</strong> Puan</span>
       <span class="hero-badge-card"><strong>1000+</strong> Taşıma</span>
       <span class="hero-badge-card"><strong>%100</strong> Sigortalı Taşıma</span>
+    </div>
+
+    <div class="container hero-overlay-content">
+      <span class="hero-badge">★ Sigortalı &amp; Güvenilir Taşımacılık</span>
+      <h1>İstanbul'da Güvenilir <span class="text-gradient">Evden Eve Nakliyat</span></h1>
+      <p class="lead">Eşyalarınız emin ellerde. Deneyimli ekibimiz, sigortalı taşıma güvencesi ve uygun fiyatlarla İstanbul'un her ilçesinde hızlı ve özenli nakliyat hizmeti sunuyoruz.</p>
+      <div class="hero-ctas">
+        <a href="#teklif-formu" class="btn btn-primary">Ücretsiz Fiyat Teklifi Al</a>
+        <a href="#hizmetler" class="btn btn-outline">Hizmetlerimizi İncele</a>
+      </div>
+      <div class="hero-trust">
+        <div>
+          <span class="num">7/24</span>
+          <small>Destek Hattı</small>
+        </div>
+        <div>
+          <span class="num counter" data-count="100" data-prefix="%">%0</span>
+          <small>Sigortalı Taşıma</small>
+        </div>
+        <div>
+          <span class="num counter" data-count="39">0</span>
+          <small>İstanbul İlçesi</small>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero-arrow hero-arrow--prev" type="button" aria-label="Önceki görsel">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="hero-arrow hero-arrow--next" type="button" aria-label="Sonraki görsel">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <div class="hero-dots" role="tablist" aria-label="Görsel seçimi">
+      <button class="hero-dot is-active" data-goto="0" aria-label="1. görsel" aria-selected="true"></button>
+      <button class="hero-dot" data-goto="1" aria-label="2. görsel" aria-selected="false"></button>
+      <button class="hero-dot" data-goto="2" aria-label="3. görsel" aria-selected="false"></button>
     </div>
 
     <div class="shape-divider shape-divider--wave" aria-hidden="true">
