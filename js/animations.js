@@ -296,4 +296,51 @@
       });
     });
   })();
+
+  /* ======================================================================
+     8) Ana CTA butonlarında "magnetic" imleç çekimi (sadece masaüstü)
+     ====================================================================== */
+  (function magneticButtons() {
+    if (reducedMotion || !canHover) return;
+    var buttons = document.querySelectorAll(".btn-primary, .btn-outline, .btn-navy");
+    var strength = 16;
+    var raf = null;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("mousemove", function (e) {
+        if (raf) return;
+        raf = window.requestAnimationFrame(function () {
+          var rect = btn.getBoundingClientRect();
+          var x = (e.clientX - rect.left) / rect.width - 0.5;
+          var y = (e.clientY - rect.top) / rect.height - 0.5;
+          btn.style.transform =
+            "translate(" + (x * strength).toFixed(1) + "px, " + (y * strength * 0.6).toFixed(1) + "px) translateY(-2px) scale(1.03)";
+          raf = null;
+        });
+      });
+      btn.addEventListener("mouseleave", function () {
+        btn.style.transform = "";
+      });
+    });
+  })();
+
+  /* ======================================================================
+     9) Buton tıklamalarında dalga (ripple) efekti
+     ====================================================================== */
+  (function rippleButtons() {
+    if (reducedMotion) return;
+    document.querySelectorAll(".btn").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        var rect = btn.getBoundingClientRect();
+        var ripple = document.createElement("span");
+        var size = Math.max(rect.width, rect.height) * 1.6;
+        ripple.className = "btn-ripple";
+        ripple.style.width = ripple.style.height = size + "px";
+        ripple.style.left = (e.clientX - rect.left - size / 2) + "px";
+        ripple.style.top = (e.clientY - rect.top - size / 2) + "px";
+        btn.appendChild(ripple);
+        ripple.addEventListener("animationend", function () { ripple.remove(); });
+      });
+    });
+  })();
 })();

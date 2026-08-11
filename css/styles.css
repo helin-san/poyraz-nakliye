@@ -154,11 +154,28 @@ section { padding: 88px 0; position: relative; }
   border: 2px solid transparent;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
   transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, background .3s ease, color .3s ease;
   white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px) scale(1.03); }
 .btn:active { transform: translateY(0) scale(.98); }
+
+/* Tıklama dalga (ripple) efekti */
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.5);
+  transform: scale(0);
+  animation: rippleExpand .6s ease-out;
+  pointer-events: none;
+}
+@keyframes rippleExpand {
+  to { transform: scale(1); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-ripple { display: none; }
+}
 
 .btn-primary {
   background: linear-gradient(120deg, var(--orange-500) 0%, var(--orange-400) 100%);
@@ -1257,6 +1274,73 @@ body {
   background: var(--white);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
+
+/* Yüzen etiketli (floating label) alanlar */
+.form-group--floating {
+  position: relative;
+  margin-bottom: 0;
+}
+.form-group--floating input,
+.form-group--floating textarea {
+  padding: 24px 40px 10px 14px;
+}
+.form-group--floating textarea { padding-top: 26px; min-height: 96px; }
+.form-group--floating label {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  margin: 0;
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  pointer-events: none;
+  transform-origin: left top;
+  transition: top .18s ease, font-size .18s ease, color .18s ease, font-weight .18s ease;
+}
+.form-group--floating input:focus + label,
+.form-group--floating input:not(:placeholder-shown) + label,
+.form-group--floating textarea:focus + label,
+.form-group--floating textarea:not(:placeholder-shown) + label {
+  top: 8px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+}
+
+.field-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+.field-icon--ok { stroke: #1a8a4a; }
+.field-icon--err { stroke: #d63b3b; }
+
+@supports selector(:has(input)) {
+  .form-group--floating:has(input:not(:placeholder-shown):valid) .field-icon--ok {
+    opacity: 1;
+  }
+  .form-group--floating:has(input:not(:placeholder-shown):invalid) .field-icon--err {
+    opacity: 1;
+  }
+  .form-group--floating:has(input:not(:placeholder-shown):invalid) input {
+    border-color: #d63b3b;
+  }
+  .form-group--floating:has(input:not(:placeholder-shown):valid) input {
+    border-color: #1a8a4a;
+  }
+}
 
 .form-note {
   font-size: .8rem;

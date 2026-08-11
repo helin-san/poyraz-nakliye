@@ -725,25 +725,33 @@
               <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
               <div class="form-grid">
-                <div class="form-group">
+                <div class="form-group form-group--floating">
+                  <input type="text" id="name" name="name" required placeholder=" ">
                   <label for="name">Ad Soyad *</label>
-                  <input type="text" id="name" name="name" required>
+                  <svg class="field-icon field-icon--ok" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                  <svg class="field-icon field-icon--err" viewBox="0 0 24 24"><path d="M12 8v5M12 16h.01" /><circle cx="12" cy="12" r="9"/></svg>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group--floating">
+                  <input type="tel" id="phone" name="phone" required placeholder=" ">
                   <label for="phone">Telefon *</label>
-                  <input type="tel" id="phone" name="phone" required placeholder="05XX XXX XX XX">
+                  <svg class="field-icon field-icon--ok" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                  <svg class="field-icon field-icon--err" viewBox="0 0 24 24"><path d="M12 8v5M12 16h.01" /><circle cx="12" cy="12" r="9"/></svg>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group--floating">
+                  <input type="text" id="from" name="from" required placeholder=" ">
                   <label for="from">Nereden *</label>
-                  <input type="text" id="from" name="from" required placeholder="Örn: Kadıköy">
+                  <svg class="field-icon field-icon--ok" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                  <svg class="field-icon field-icon--err" viewBox="0 0 24 24"><path d="M12 8v5M12 16h.01" /><circle cx="12" cy="12" r="9"/></svg>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group--floating">
+                  <input type="text" id="to" name="to" required placeholder=" ">
                   <label for="to">Nereye *</label>
-                  <input type="text" id="to" name="to" required placeholder="Örn: Ataşehir">
+                  <svg class="field-icon field-icon--ok" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                  <svg class="field-icon field-icon--err" viewBox="0 0 24 24"><path d="M12 8v5M12 16h.01" /><circle cx="12" cy="12" r="9"/></svg>
                 </div>
-                <div class="form-group full">
+                <div class="form-group form-group--floating full">
+                  <input type="text" id="address" name="address" placeholder=" ">
                   <label for="address">Açık Adres</label>
-                  <input type="text" id="address" name="address" placeholder="Mahalle, cadde, kat / daire bilgisi">
                 </div>
                 <div class="form-group full">
                   <label for="itemType">Eşya Tipi</label>
@@ -756,9 +764,9 @@
                     <option value="Diğer">Diğer</option>
                   </select>
                 </div>
-                <div class="form-group full">
+                <div class="form-group form-group--floating full">
+                  <textarea id="message" name="message" placeholder=" "></textarea>
                   <label for="message">Mesajınız</label>
-                  <textarea id="message" name="message" placeholder="Eklemek istediğiniz detaylar (asansör durumu, tarih vb.)"></textarea>
                 </div>
               </div>
 
