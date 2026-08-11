@@ -1,0 +1,19 @@
+{
+  "name": "Poyraz Nakliye | İstanbul Evden Eve Nakliyat",
+  "short_name": "Poyraz Nakliye",
+  "description": "İstanbul içi evden eve nakliyat, ofis taşımacılığı, parça eşya taşıma, eşya depolama ve ambalajlama hizmetleri.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F6FAFF",
+  "theme_color": "#14335C",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "assets/logo-square.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

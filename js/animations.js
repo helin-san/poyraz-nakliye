@@ -4,6 +4,9 @@
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var isDesktop = window.matchMedia("(min-width: 861px)");
   var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var supportsCssFn = window.CSS && window.CSS.supports;
+  var hasNativeViewTimeline = !reducedMotion && supportsCssFn && CSS.supports("animation-timeline: view()");
+  var hasNativeScrollTimeline = !reducedMotion && supportsCssFn && CSS.supports("animation-timeline: scroll()");
 
   /* ======================================================================
      1) Nav indicator — kayan gösterge + scroll-spy
@@ -21,8 +24,10 @@
         indicator.classList.remove("is-visible");
         return;
       }
-      indicator.style.left = link.offsetLeft + "px";
-      indicator.style.width = link.offsetWidth + "px";
+      var navRect = nav.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      indicator.style.left = (linkRect.left - navRect.left) + "px";
+      indicator.style.width = linkRect.width + "px";
       indicator.classList.add("is-visible");
     }
 
@@ -81,6 +86,13 @@
 
     var items = Array.prototype.slice.call(document.querySelectorAll(selector));
     if (!items.length) return;
+
+    if (hasNativeViewTimeline) {
+      /* Tarayıcı native scroll-driven animasyonu destekliyor: CSS
+         (animation-timeline: view()) devreye giriyor, JS'e gerek yok. */
+      items.forEach(function (el) { el.classList.add("reveal"); });
+      return;
+    }
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
       items.forEach(function (el) { el.classList.add("reveal", "in-view"); });
@@ -225,6 +237,12 @@
   (function scrollProgress() {
     var bar = document.querySelector(".scroll-progress");
     if (!bar) return;
+
+    if (hasNativeScrollTimeline) {
+      /* Tarayıcı native scroll-timeline destekliyor: CSS
+         (animation-timeline: scroll(root)) devreye giriyor, JS'e gerek yok. */
+      return;
+    }
 
     function update() {
       var scrollTop = window.scrollY || document.documentElement.scrollTop;

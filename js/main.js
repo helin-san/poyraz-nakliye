@@ -4,10 +4,18 @@
   /* Mobil menü aç/kapat */
   var header = document.querySelector(".site-header");
   var navToggle = document.querySelector(".nav-toggle");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (navToggle && header) {
     navToggle.addEventListener("click", function () {
-      var isOpen = header.classList.toggle("nav-open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      function toggle() {
+        var isOpen = header.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      }
+      if (document.startViewTransition && !prefersReducedMotion) {
+        document.startViewTransition(toggle);
+      } else {
+        toggle();
+      }
     });
     document.querySelectorAll(".main-nav a").forEach(function (link) {
       link.addEventListener("click", function () {
